@@ -1,4 +1,4 @@
-﻿namespace Swordsman.States.Base
+﻿namespace Game.States.Base
 {
     public abstract class BaseState
     {

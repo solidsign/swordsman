@@ -1,4 +1,4 @@
-﻿namespace Swordsman.Inputs
+﻿namespace Game.Inputs
 {
     public class InputChecker
     {
