@@ -7,5 +7,6 @@
         public abstract bool IsFinished();
         public virtual void Execute() { }
         public virtual void Exit() { }
+        public abstract override string ToString();
     }
 }
