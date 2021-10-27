@@ -1,6 +1,8 @@
 {
     "name": "States",
-    "references": [],
+    "references": [
+        "GUID:b66df777cf8c4f9ebd0902118d8038f7"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
