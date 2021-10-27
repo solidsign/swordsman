@@ -7,5 +7,6 @@
         public virtual void Execute() { }
         public virtual void Exit() { }
         public abstract override string ToString();
+        public virtual bool VerifyNextState(string state) => true;
     }
 }

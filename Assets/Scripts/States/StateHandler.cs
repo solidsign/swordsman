@@ -23,8 +23,9 @@ namespace Game.States
             CurrentState?.Execute();
         }
 
-        protected void SetState(string state)
+        public void SetState(string state)
         {
+            if (!CurrentState.VerifyNextState(state)) return;
             BaseState newState = null;
             if (States.TryGetValue(state, out newState))
             {
