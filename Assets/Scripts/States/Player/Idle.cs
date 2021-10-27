@@ -5,8 +5,7 @@ namespace Game.States.Player
     public class Idle : BaseState
     {
         private Animator _animator;
-        private const string Name = "Idle";
-        private static readonly int IdleAnimation = Animator.StringToHash(Name);
+        private static readonly int IdleAnimation = Animator.StringToHash(nameof(Idle));
 
         public override void Init(StateHandler stateHandler)
         {
@@ -20,7 +19,7 @@ namespace Game.States.Player
 
         public override string ToString()
         {
-            return Name;
+            return nameof(Idle);
         }
     }
 }
