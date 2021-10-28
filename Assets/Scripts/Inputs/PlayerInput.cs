@@ -2,13 +2,13 @@
 
 namespace Game.Inputs
 {
-    public class PlayerInputChecker : ISwordsmanInput
+    public class PlayerInput : ISwordsmanInput
     {
-        private static PlayerInputChecker _instance;
-        private PlayerInputChecker() { }
-        public static PlayerInputChecker GetInstance()
+        private static PlayerInput _instance;
+        private PlayerInput() { }
+        public static PlayerInput GetInstance()
         {
-            if (_instance == null) _instance = new PlayerInputChecker();
+            if (_instance == null) _instance = new PlayerInput();
             return _instance;
         }
 

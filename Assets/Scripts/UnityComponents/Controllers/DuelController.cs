@@ -1,4 +1,5 @@
 ﻿using Game.Extra;
+using Game.Inputs;
 using Game.States.Player;
 using UnityEngine;
 
@@ -6,21 +7,23 @@ namespace Game
 {
     public class DuelController : MonoBehaviour
     {
-        [SerializeField] private StateHandler opponent1;
-        [SerializeField] private StateHandler opponent2;
+        [SerializeField] private SwordsmanStateHandler player;
+        [SerializeField] private SwordsmanStateHandler ai;
 
         private Transform t1;
         private Transform t2;
         private void Awake()
         {
-            opponent1.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            opponent2.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
+            player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
+            ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
+            player.Init(PlayerInput.GetInstance());
+            ai.Init(new AIInput(ai.GetComponent<AccessToComponentsNeededForAI>()));
         }
 
         private void Start()
         {
-            t1 = opponent1.transform;
-            t2 = opponent2.transform;
+            t1 = player.transform;
+            t2 = ai.transform;
         }
 
         public bool CheckAttackDistance(float attackDistance)
@@ -30,8 +33,8 @@ namespace Game
 
         public void Attack(StateHandler attacker, Direction direction)
         {
-            if(attacker == opponent1) opponent2.SetState(nameof(Attacked) + direction.ToString());
-            if(attacker == opponent2) opponent1.SetState(nameof(Attacked) + direction.ToString());
+            if(attacker == player) ai.SetState(nameof(Attacked) + direction.ToString());
+            if(attacker == ai) player.SetState(nameof(Attacked) + direction.ToString());
         }
     }
 }
