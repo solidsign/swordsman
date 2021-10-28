@@ -5,12 +5,14 @@
     {
         Moving,
         Idle,
-        Death,
         BlockingUp,
         BlockingMiddle,
         BlockingBottom,
         AttackingUp,
         AttackingMiddle,
         AttackingBottom,
+        AttackedBottom,
+        AttackedMiddle,
+        AttackedUp
     }
 }
