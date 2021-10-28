@@ -1,4 +1,4 @@
-﻿namespace Game.Animations
+﻿namespace Game.Extra
 {
     [System.Serializable]
     public enum PlayerAnimation
