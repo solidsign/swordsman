@@ -2,7 +2,7 @@
 
 namespace Game.States.Player
 {
-    public abstract class Attacking : BaseState
+    public abstract class Attacking : BaseState // TODO: create inheritors
     {
         protected Animator _animator;
         protected StateHandler _rival;
