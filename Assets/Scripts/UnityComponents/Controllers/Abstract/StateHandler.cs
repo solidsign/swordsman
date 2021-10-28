@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Game.States;
 
-namespace Game.States
+namespace Game
 {
     public abstract class StateHandler : MonoBehaviour
     {
