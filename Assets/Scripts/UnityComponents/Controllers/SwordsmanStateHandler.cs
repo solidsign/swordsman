@@ -10,9 +10,9 @@ namespace Game
     {
         private ISwordsmanInput _inputChecker;
 
-        private void Awake()
+        public void Init(ISwordsmanInput input)
         {
-            _inputChecker = PlayerInputChecker.GetInstance();
+            _inputChecker = input;
         }
 
         protected override void InitializeDictionary()
