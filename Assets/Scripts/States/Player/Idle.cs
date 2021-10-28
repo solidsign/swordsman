@@ -1,4 +1,4 @@
-﻿using Game.Animations;
+﻿using Game.Extra;
 using UnityEngine;
 
 namespace Game.States.Player

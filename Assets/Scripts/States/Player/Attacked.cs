@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Game.Animations;
+using Game.Extra;
 
 namespace Game.States.Player
 {
