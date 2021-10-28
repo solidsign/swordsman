@@ -9,20 +9,24 @@ namespace Game
         protected Dictionary<string, BaseState> States;
         protected BaseState CurrentState;
 
-        protected abstract void Awake();
-
-        protected virtual void Start()
+        private void Start()
         {
+            InitializeDictionary();
             foreach (var state in States)
             {
                 state.Value.Init(this);
             }
         }
 
-        protected virtual void Update()
+        protected abstract void InitializeDictionary();
+
+        private void Update()
         {
+            CheckIfStateTransitionNeeded();
             CurrentState?.Execute();
         }
+
+        protected abstract void CheckIfStateTransitionNeeded();
 
         public void SetState(string state)
         {
