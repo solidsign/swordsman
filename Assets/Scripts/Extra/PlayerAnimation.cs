@@ -13,6 +13,9 @@
         AttackingBottom,
         AttackedBottom,
         AttackedMiddle,
-        AttackedUp
+        AttackedUp,
+        PrepareAttackUp,
+        PrepareAttackMiddle,
+        PrepareAttackBottom
     }
 }
