@@ -4,10 +4,10 @@ using Game.Animations;
 
 namespace Game
 {
-    public class AnimationController : MonoBehaviour
+    public class AnimationSetter : MonoBehaviour
     {
         private Animator _animator;
-        private Dictionary<AnimationName, List<string>> _triggers;
+        private Dictionary<PlayerAnimation, List<string>> _triggers;
 
         [SerializeField] private List<AnimationTriggerNames> triggerNames;
         
@@ -19,7 +19,7 @@ namespace Game
 
         private void InitializeDictionary()
         {
-            _triggers = new Dictionary<AnimationName, List<string>>(triggerNames.Count);
+            _triggers = new Dictionary<PlayerAnimation, List<string>>(triggerNames.Count);
             foreach (var triggerName in triggerNames)
             {
                 if (_triggers.ContainsKey(triggerName.AnimationName))
@@ -33,7 +33,7 @@ namespace Game
             }
         }
 
-        public void SetAnimation(AnimationName animationName)
+        public void SetAnimation(PlayerAnimation animationName)
         {
             if (!_triggers.ContainsKey(animationName))
             {

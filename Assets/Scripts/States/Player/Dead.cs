@@ -1,19 +1,19 @@
-﻿using UnityEngine;
+﻿using Game.Animations;
+using UnityEngine;
 
 namespace Game.States.Player
 {
     public class Dead : BaseState
     {
-        private Animator _animator;
-        private static readonly int DeathAnimation = Animator.StringToHash(nameof(Dead));
+        private AnimationSetter _animator;
         public override void Init(StateHandler stateHandler)
         {
-            _animator = stateHandler.GetComponent<Animator>();
+            _animator = stateHandler.GetComponent<AnimationSetter>();
         }
 
         public override void Enter()
         {
-            _animator.SetTrigger(DeathAnimation);
+            _animator.SetAnimation(PlayerAnimation.Death);
         }
 
         public override string ToString()

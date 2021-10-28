@@ -1,20 +1,20 @@
-﻿using UnityEngine;
+﻿using Game.Animations;
+using UnityEngine;
 
 namespace Game.States.Player
 {
     public class Idle : BaseState
     {
-        private Animator _animator;
-        private static readonly int IdleAnimation = Animator.StringToHash(nameof(Idle));
+        private AnimationSetter _animator;
 
         public override void Init(StateHandler stateHandler)
         {
-            _animator = stateHandler.GetComponent<Animator>();
+            _animator = stateHandler.GetComponent<AnimationSetter>();
         }
 
         public override void Enter()
         {
-            _animator.SetTrigger(IdleAnimation);
+            _animator.SetAnimation(PlayerAnimation.Idle);
         }
 
         public override string ToString()

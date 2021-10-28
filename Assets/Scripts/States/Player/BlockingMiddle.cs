@@ -1,10 +1,12 @@
-﻿namespace Game.States.Player
+﻿using Game.Animations;
+
+namespace Game.States.Player
 {
     public class BlockingMiddle : Blocking
     {
-        public override void Execute()
+        public override void Enter()
         {
-            _animator.SetTrigger(nameof(BlockingMiddle));
+            _animator.SetAnimation(PlayerAnimation.BlockingMiddle);
         }
 
         public override string ToString()
