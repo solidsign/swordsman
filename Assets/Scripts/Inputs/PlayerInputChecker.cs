@@ -2,13 +2,13 @@
 
 namespace Game.Inputs
 {
-    public class InputChecker
+    public class PlayerInputChecker : ISwordsmanInput
     {
-        private static InputChecker _instance;
-        private InputChecker() { }
-        public static InputChecker GetInstance()
+        private static PlayerInputChecker _instance;
+        private PlayerInputChecker() { }
+        public static PlayerInputChecker GetInstance()
         {
-            if (_instance == null) _instance = new InputChecker();
+            if (_instance == null) _instance = new PlayerInputChecker();
             return _instance;
         }
 
@@ -20,7 +20,5 @@ namespace Game.Inputs
         public bool AttackUp() => Input.GetKeyDown(KeyCode.Keypad9);
         public bool AttackMiddle() => Input.GetKeyDown(KeyCode.Keypad6);
         public bool AttackBottom() => Input.GetKeyDown(KeyCode.Keypad3);
-        public bool Pause() => Input.GetKeyDown(KeyCode.Escape);
-        public bool Start() => Input.GetKeyDown(KeyCode.Space);
     }
 }

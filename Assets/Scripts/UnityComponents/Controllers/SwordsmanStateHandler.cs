@@ -6,13 +6,13 @@ using Game.States.Player;
 
 namespace Game
 {
-    public class PlayerStateHandler : StateHandler
+    public class SwordsmanStateHandler : StateHandler
     {
-        private InputChecker _inputChecker;
+        private ISwordsmanInput _inputChecker;
 
         private void Awake()
         {
-            _inputChecker = InputChecker.GetInstance();
+            _inputChecker = PlayerInputChecker.GetInstance();
         }
 
         protected override void InitializeDictionary()
