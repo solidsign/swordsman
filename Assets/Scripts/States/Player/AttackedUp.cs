@@ -1,4 +1,6 @@
-﻿namespace Game.States.Player
+﻿using Game.Animations;
+
+namespace Game.States.Player
 {
     public class AttackedUp : Attacked
     {
@@ -6,10 +8,6 @@
         {
             return nameof(AttackedUp);
         }
-
-        public override bool VerifyNextState(string state)
-        {
-            return state == nameof(Dead) || state == nameof(BlockingUp);
-        }
+        protected override PlayerAnimation _animation => PlayerAnimation.AttackedUp;
     }
 }
