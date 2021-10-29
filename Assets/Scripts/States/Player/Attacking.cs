@@ -38,8 +38,8 @@ namespace Game.States.Player
             _preparing = true;
             _animator.SetAnimation(_prepareAnimation);
             yield return new WaitForSeconds(_weapon.PrepareForAttackTime);
-            Attack();
             _preparing = false;
+            Attack();
         }
 
 
@@ -48,6 +48,7 @@ namespace Game.States.Player
             _animator.SetAnimation(_attackAnimation);
             if (!_duelController.CheckAttackDistance(_weapon.AttackDistance)) return;
             _duelController.Attack(_stateHandler, _direction);
+            _stateHandler.StartCoroutine(WaitForNextState());
         }
 
         private IEnumerator WaitForNextState()
