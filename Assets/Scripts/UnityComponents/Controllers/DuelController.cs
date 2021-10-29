@@ -10,25 +10,21 @@ namespace Game
         [SerializeField] private SwordsmanStateHandler player;
         [SerializeField] private SwordsmanStateHandler ai;
 
-        private Transform t1;
-        private Transform t2;
+        private BodyPosition _positionBody1;
+        private BodyPosition _positionBody2;
         private void Awake()
         {
             player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             player.Init(PlayerInput.GetInstance());
             ai.Init(new AIInput(ai.GetComponent<AccessToComponentsNeededForAI>()));
-        }
-
-        private void Start()
-        {
-            t1 = player.transform;
-            t2 = ai.transform;
+            _positionBody1 = player.GetComponent<BodyPosition>();
+            _positionBody2 = ai.GetComponent<BodyPosition>();
         }
 
         public bool CheckAttackDistance(float attackDistance)
         {
-            return Vector3.Distance(t1.position, t2.position) <= attackDistance;
+            return Vector3.Distance(_positionBody1.Value, _positionBody2.Value) <= attackDistance;
         }
 
         public void Attack(StateHandler attacker, Direction direction)
