@@ -11,9 +11,9 @@
         AttackingUp,
         AttackingMiddle,
         AttackingBottom,
-        AttackedBottom,
-        AttackedMiddle,
         AttackedUp,
+        AttackedMiddle,
+        AttackedBottom,
         PrepareAttackUp,
         PrepareAttackMiddle,
         PrepareAttackBottom
