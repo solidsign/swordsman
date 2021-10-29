@@ -2,6 +2,7 @@
 {
     public static class PlayerAnimationConfiguration
     {
-        public static float AttackStateTime => 0.2f;
+        public const float BlockStateTime = 0.2f;
+        public const float AttackStateTime = 0.2f;
     }
 }
