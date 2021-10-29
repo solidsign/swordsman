@@ -2,8 +2,10 @@
 {
     public interface ISwordsmanInput
     {
-        bool MoveRight();
-        bool MoveLeft();
+        bool StartMoveRight();
+        bool StartMoveLeft();
+        bool StopMoveRight();
+        bool StopMoveLeft();
         bool BlockUp();
         bool BlockMiddle();
         bool BlockBottom();

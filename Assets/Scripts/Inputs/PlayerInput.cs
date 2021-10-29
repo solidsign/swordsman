@@ -12,8 +12,10 @@ namespace Game.Inputs
             return _instance;
         }
 
-        public bool MoveRight() => Input.GetKeyDown(KeyCode.RightArrow);
-        public bool MoveLeft() => Input.GetKeyDown(KeyCode.LeftArrow);
+        public bool StartMoveRight() => Input.GetKeyDown(KeyCode.RightArrow);
+        public bool StartMoveLeft() => Input.GetKeyDown(KeyCode.LeftArrow);
+        public bool StopMoveRight() => Input.GetKeyUp(KeyCode.RightArrow);
+        public bool StopMoveLeft() => Input.GetKeyUp(KeyCode.LeftArrow);
         public bool BlockUp() => Input.GetKeyDown(KeyCode.Keypad7);
         public bool BlockMiddle() => Input.GetKeyDown(KeyCode.Keypad4);
         public bool BlockBottom() => Input.GetKeyDown(KeyCode.Keypad1);

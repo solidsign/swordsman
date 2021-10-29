@@ -8,12 +8,22 @@
             _components = components;
         }
         
-        public bool MoveRight()
+        public bool StartMoveRight()
         {
             throw new System.NotImplementedException();
         }
 
-        public bool MoveLeft()
+        public bool StartMoveLeft()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool StopMoveRight()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool StopMoveLeft()
         {
             throw new System.NotImplementedException();
         }
