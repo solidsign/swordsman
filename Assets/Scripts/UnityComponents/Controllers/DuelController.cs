@@ -27,8 +27,9 @@ namespace Game
             return Vector3.Distance(_positionBody1.Value, _positionBody2.Value) <= attackDistance;
         }
 
-        public void Attack(StateHandler attacker, Direction direction)
+        public void Attack(StateHandler attacker, Direction direction, float attackDistance)
         {
+            if (!CheckAttackDistance(attackDistance)) return;
             if(attacker == player) ai.SetState(nameof(Attacked) + direction.ToString());
             if(attacker == ai) player.SetState(nameof(Attacked) + direction.ToString());
         }

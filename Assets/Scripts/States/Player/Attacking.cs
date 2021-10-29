@@ -46,8 +46,7 @@ namespace Game.States.Player
         private void Attack()
         {
             _animator.SetAnimation(_attackAnimation);
-            if (!_duelController.CheckAttackDistance(_weapon.AttackDistance)) return;
-            _duelController.Attack(_stateHandler, _direction);
+            _duelController.Attack(_stateHandler, _direction, _weapon.AttackDistance);
             _stateHandler.StartCoroutine(WaitForNextState());
         }
 
