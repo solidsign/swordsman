@@ -18,6 +18,8 @@ namespace Game.States.Player
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _weapon = stateHandler.GetComponent<Weapon>();
+            _stateHandler = stateHandler;
+            _duelController = stateHandler.GetComponent<DuelControllerInstance>().DuelController;
         }
 
         public override void Enter()
