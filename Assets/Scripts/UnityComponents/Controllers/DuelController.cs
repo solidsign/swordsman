@@ -22,10 +22,9 @@ namespace Game
             _positionBody2 = ai.GetComponent<BodyPosition>();
         }
 
-        public bool CheckAttackDistance(float attackDistance)
-        {
-            return Vector3.Distance(_positionBody1.Value, _positionBody2.Value) <= attackDistance;
-        }
+        public bool CheckAttackDistance(float attackDistance) => Distance() <= attackDistance;
+
+        public float Distance() => Vector3.Distance(_positionBody1.Value, _positionBody2.Value);
 
         public void Attack(StateHandler attacker, Direction direction, float attackDistance)
         {
