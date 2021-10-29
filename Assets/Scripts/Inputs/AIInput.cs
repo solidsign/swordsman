@@ -18,12 +18,7 @@
             throw new System.NotImplementedException();
         }
 
-        public bool StopMoveRight()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool StopMoveLeft()
+        public bool StopMove()
         {
             throw new System.NotImplementedException();
         }

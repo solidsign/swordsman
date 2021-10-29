@@ -4,8 +4,7 @@
     {
         bool StartMoveRight();
         bool StartMoveLeft();
-        bool StopMoveRight();
-        bool StopMoveLeft();
+        bool StopMove();
         bool BlockUp();
         bool BlockMiddle();
         bool BlockBottom();
