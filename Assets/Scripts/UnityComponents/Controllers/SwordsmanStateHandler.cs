@@ -51,7 +51,7 @@ namespace Game
             
             if (_inputChecker.AttackBottom())
             {
-                SetState(nameof(AttackedBottom));
+                SetState(nameof(AttackingBottom));
                 return;
             }
             
