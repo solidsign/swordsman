@@ -12,13 +12,15 @@ namespace Game
         private void Start()
         {
             InitializeDictionary();
-            foreach (var state in States)
+            foreach (var state in States.Values)
             {
-                state.Value.Init(this);
+                state.Init(this);
             }
+            SetStartState();
         }
 
         protected abstract void InitializeDictionary();
+        protected abstract void SetStartState();
 
         private void Update()
         {
@@ -30,7 +32,7 @@ namespace Game
 
         public void SetState(string state)
         {
-            if (!CurrentState.VerifyNextState(state)) return;
+            if (CurrentState != null && !CurrentState.VerifyNextState(state)) return;
             BaseState newState = null;
             if (States.TryGetValue(state, out newState))
             {

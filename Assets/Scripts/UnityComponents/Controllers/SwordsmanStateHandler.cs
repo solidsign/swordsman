@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.Inputs;
 using Game.States;
 using Game.States.Player;
@@ -9,6 +8,8 @@ namespace Game
     public class SwordsmanStateHandler : StateHandler
     {
         private ISwordsmanInput _inputChecker;
+
+        private bool _isMoving; 
 
         public void Init(ISwordsmanInput input)
         {
@@ -32,23 +33,16 @@ namespace Game
                 {nameof(BlockingMiddle), new BlockingMiddle()},
                 {nameof(BlockingBottom), new BlockingBottom()},
             };
+        }
+
+        protected override void SetStartState()
+        {
             SetState(nameof(Idle));
+            _isMoving = false;
         }
 
         protected override void CheckIfStateTransitionNeeded()
         {
-            if (_inputChecker.MoveLeft())
-            {
-                SetState(nameof(MovingLeft));
-                return;
-            }
-
-            if (_inputChecker.MoveRight())
-            {
-                SetState(nameof(MovingRight));
-                return;
-            }
-
             if (_inputChecker.AttackUp())
             {
                 SetState(nameof(AttackingUp));
@@ -83,6 +77,31 @@ namespace Game
             {
                 SetState(nameof(BlockingMiddle));
                 return;
+            }
+            
+            if (_isMoving)
+            {
+                if (_inputChecker.StopMove())
+                {
+                    SetState(nameof(Idle));
+                    _isMoving = false;
+                }
+            }
+            else
+            {
+                if (_inputChecker.StartMoveLeft())
+                {
+                    SetState(nameof(MovingLeft));
+                    _isMoving = true;
+                    return;
+                }
+
+                if (_inputChecker.StartMoveRight())
+                {
+                    SetState(nameof(MovingRight));
+                    _isMoving = true;
+                    return;
+                }
             }
         }
     }
