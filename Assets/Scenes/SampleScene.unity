@@ -121,69 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &401120361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 401120363}
-  - component: {fileID: 401120362}
-  - component: {fileID: 401120364}
-  m_Layer: 0
-  m_Name: Post-process Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &401120362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401120361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: a193ae1b215499f419313adaa70680d4, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 0
-  priority: 0
---- !u!4 &401120363
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401120361}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5412742, y: -0.25946635, z: -1.4106393}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &401120364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401120361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96adcaaf7eec4d4891a2fa6a656f8096, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableTime: 0.05
-  disableTime: 0.05
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +218,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.7924528, g: 0.42986828, b: 0.47821283, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -328,18 +265,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1659382568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6897513853305711417, guid: 119ffc81131703a4d92491362c78dde4,
-    type: 3}
-  m_PrefabInstance: {fileID: 6897513853396933046}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afeef2b5fc8f40f890612c0bc0282ba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6897513853396933046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -347,11 +272,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2171694328936760094, guid: 119ffc81131703a4d92491362c78dde4,
-        type: 3}
-      propertyPath: DuelController
-      value: 
-      objectReference: {fileID: 1659382568}
     - target: {fileID: 4437745001702286087, guid: 119ffc81131703a4d92491362c78dde4,
         type: 3}
       propertyPath: offset.x
@@ -362,16 +282,21 @@ PrefabInstance:
       propertyPath: offset.x
       value: -1.23
       objectReference: {fileID: 0}
-    - target: {fileID: 6897513853042104785, guid: 119ffc81131703a4d92491362c78dde4,
+    - target: {fileID: 6484259193687509348, guid: 119ffc81131703a4d92491362c78dde4,
         type: 3}
-      propertyPath: DuelController
-      value: 
-      objectReference: {fileID: 1659382568}
-    - target: {fileID: 6897513853305711417, guid: 119ffc81131703a4d92491362c78dde4,
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964153978336979274, guid: 119ffc81131703a4d92491362c78dde4,
         type: 3}
-      propertyPath: duelEndEffect
-      value: 
-      objectReference: {fileID: 401120364}
+      propertyPath: enableTime
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964153978336979274, guid: 119ffc81131703a4d92491362c78dde4,
+        type: 3}
+      propertyPath: disableTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7106879705279125325, guid: 119ffc81131703a4d92491362c78dde4,
         type: 3}
       propertyPath: m_RootOrder
