@@ -45,7 +45,7 @@ namespace Game
         private void DisableEffect()
         {
             duelEndEffect.DisableEffect();
-            _defeated.gameObject.SetActive(false);
+            Destroy(_defeated.gameObject);
         }
     }
 }
