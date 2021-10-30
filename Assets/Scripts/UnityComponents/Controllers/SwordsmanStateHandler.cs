@@ -104,5 +104,7 @@ namespace Game
                 }
             }
         }
+
+        public string GetCurrentState() => CurrentState.ToString();
     }
 }

@@ -25,6 +25,7 @@ namespace Game
         public bool CheckAttackDistance(float attackDistance) => Distance() <= attackDistance;
 
         public float Distance() => Vector3.Distance(_positionBody1.Value, _positionBody2.Value);
+        public string GetPlayerState() => player.GetCurrentState();
 
         public void Attack(StateHandler attacker, Direction direction, float attackDistance)
         {
