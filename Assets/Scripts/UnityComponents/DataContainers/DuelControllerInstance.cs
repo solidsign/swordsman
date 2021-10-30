@@ -4,6 +4,6 @@ namespace Game
 {
     public class DuelControllerInstance : MonoBehaviour
     {
-        public DuelController DuelController { get; set; }
+        public DuelController DuelController;
     }
 }

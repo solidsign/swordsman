@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Game.Extra;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -10,8 +12,8 @@ namespace Game
         private Dictionary<PlayerAnimation, List<string>> _triggers;
 
         [SerializeField] private List<AnimationTriggerNames> triggerNames;
-        
-        private void Start()
+
+        private void Awake()
         {
             InitializeDictionary();
             _animator = GetComponent<Animator>();

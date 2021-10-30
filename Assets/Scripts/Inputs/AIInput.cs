@@ -10,47 +10,47 @@
         
         public bool StartMoveRight()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool StartMoveLeft()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool StopMove()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool BlockUp()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool BlockMiddle()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool BlockBottom()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool AttackUp()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool AttackMiddle()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
         public bool AttackBottom()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
     }
 }
