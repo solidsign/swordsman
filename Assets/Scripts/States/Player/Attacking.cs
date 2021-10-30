@@ -9,7 +9,7 @@ namespace Game.States.Player
         private AnimationSetter _animator;
         private Weapon _weapon;
         private DuelController _duelController;
-        private StateHandler _stateHandler;
+        private SwordsmanStateHandler _stateHandler;
         private bool _preparing;
         protected abstract Direction _direction { get; }
         protected abstract PlayerAnimation _attackAnimation { get; }
@@ -18,7 +18,7 @@ namespace Game.States.Player
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _weapon = stateHandler.GetComponent<Weapon>();
-            _stateHandler = stateHandler;
+            _stateHandler = stateHandler as SwordsmanStateHandler;
             _duelController = stateHandler.GetComponent<DuelControllerInstance>().DuelController;
         }
 

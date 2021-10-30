@@ -10,6 +10,8 @@ namespace Game
         [SerializeField] private SwordsmanStateHandler player;
         [SerializeField] private SwordsmanStateHandler ai;
 
+        [SerializeField] private DuelEndEffect duelEndEffect;
+        
         private BodyPosition _positionBody1;
         private BodyPosition _positionBody2;
         private void Awake()
@@ -27,11 +29,25 @@ namespace Game
         public float Distance() => Vector3.Distance(_positionBody1.Value, _positionBody2.Value);
         public string GetPlayerState() => player.GetCurrentState();
 
-        public void Attack(StateHandler attacker, Direction direction, float attackDistance)
+        public void Attack(SwordsmanStateHandler attacker, Direction direction, float attackDistance)
         {
             if (!CheckAttackDistance(attackDistance)) return;
-            if(attacker == player) ai.SetState(nameof(Attacked) + direction.ToString());
-            if(attacker == ai) player.SetState(nameof(Attacked) + direction.ToString());
+            
+            SwordsmanStateHandler attacked;
+            if (attacker == player) attacked = ai;
+            else if (attacker == ai) attacked = player;
+            else return;
+            
+            attacked.SetState(nameof(Attacked) + direction.ToString());
+            
+            if (!attacked.GetCurrentState().Contains(nameof(Attacked))) return;
+            duelEndEffect.EnableEffect();
+            Invoke(nameof(DisableEffect), PlayerAnimationConfiguration.DeathTime);
+        }
+
+        private void DisableEffect()
+        {
+            duelEndEffect.DisableEffect();
         }
     }
 }
