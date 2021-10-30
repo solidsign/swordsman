@@ -11,6 +11,8 @@ namespace Game
         [SerializeField] private SwordsmanStateHandler ai;
 
         [SerializeField] private DuelEndEffect duelEndEffect;
+
+        private SwordsmanStateHandler _defeated = null;
         private void Awake()
         {
             player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
@@ -36,12 +38,14 @@ namespace Game
             
             if (!attacked.GetCurrentState().Contains(nameof(Attacked))) return;
             duelEndEffect.EnableEffect();
+            _defeated = attacked;
             Invoke(nameof(DisableEffect), PlayerAnimationConfiguration.DeathTime);
         }
 
         private void DisableEffect()
         {
             duelEndEffect.DisableEffect();
+            _defeated.gameObject.SetActive(false);
         }
     }
 }

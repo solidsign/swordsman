@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 4727526382021054715}
   - component: {fileID: 4727526382021054714}
   - component: {fileID: 4727526382021054709}
+  - component: {fileID: 5699031399019705405}
+  - component: {fileID: 4437745001702286087}
   m_Layer: 0
   m_Name: SampleSwordsman
   m_TagString: Untagged
@@ -98,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 4727526382021054708}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba48de77f3ef8844a8362adead07c12b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -207,8 +209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b75959cf314a08a85f3883816a96cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 2
-  prepareForAttackTime: 1
+  attackDistance: 3.23
+  prepareForAttackTime: 0.2
+  attackPointOffsetX: 0
 --- !u!114 &4727526382021054714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +237,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce227bd324474c9baa4d587f3441989e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DuelController: {fileID: 0}
+--- !u!114 &5699031399019705405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727526382021054708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17b8412d43641409be5641eac9f354b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: -1.29, y: 0}
+--- !u!114 &4437745001702286087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727526382021054708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17b8412d43641409be5641eac9f354b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 1.21, y: 0}

@@ -1,31 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4437745001702286087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2171694328936760095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17b8412d43641409be5641eac9f354b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 1.21, y: 0}
---- !u!114 &5699031399019705405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897513853042104784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17b8412d43641409be5641eac9f354b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: -1.29, y: 0}
 --- !u!1 &6897513853305711416
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,21 +96,6 @@ PrefabInstance:
       propertyPath: DuelController
       value: 
       objectReference: {fileID: 6897513853305711417}
-    - target: {fileID: 4727526382021054715, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-        type: 3}
-      propertyPath: attackDistance
-      value: 3.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4727526382021054715, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-        type: 3}
-      propertyPath: prepareForAttackTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4727526382021054717, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ba48de77f3ef8844a8362adead07c12b, type: 2}
     - target: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
         type: 3}
       propertyPath: m_RootOrder
@@ -194,12 +153,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
---- !u!1 &6897513853042104784 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4727526382021054708, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 2171694328874666276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6897513853042104795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
@@ -212,7 +165,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2171694328874666276}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897513853042104784}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86ad4b11f3704df586a790e7e24d9a89, type: 3}
@@ -235,16 +188,6 @@ PrefabInstance:
       propertyPath: DuelController
       value: 
       objectReference: {fileID: 6897513853305711417}
-    - target: {fileID: 4727526382021054715, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-        type: 3}
-      propertyPath: prepareForAttackTime
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4727526382021054717, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ba48de77f3ef8844a8362adead07c12b, type: 2}
     - target: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
         type: 3}
       propertyPath: m_RootOrder
@@ -302,12 +245,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
---- !u!1 &2171694328936760095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4727526382021054708, guid: 3437ff4db31850b4da39ebef4f9c5d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 6897513853104853995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2171694328936760084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
@@ -320,7 +257,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6897513853104853995}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2171694328936760095}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86ad4b11f3704df586a790e7e24d9a89, type: 3}
