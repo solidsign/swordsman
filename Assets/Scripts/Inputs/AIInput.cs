@@ -2,10 +2,10 @@
 {
     public class AIInput : ISwordsmanInput // TODO: don't forget to implement AI
     {
-        private AccessToComponentsNeededForAI _components;
-        public AIInput(AccessToComponentsNeededForAI components)
+        private DuelController _duel;
+        public AIInput(DuelController duelController)
         {
-            _components = components;
+            _duel = duelController;
         }
         
         public bool StartMoveRight()

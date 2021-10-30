@@ -17,7 +17,7 @@ namespace Game
             player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             player.Init(PlayerInput.GetInstance());
-            ai.Init(new AIInput(ai.GetComponent<AccessToComponentsNeededForAI>()));
+            ai.Init(new AIInput(this));
             _positionBody1 = player.GetComponent<BodyPosition>();
             _positionBody2 = ai.GetComponent<BodyPosition>();
         }
