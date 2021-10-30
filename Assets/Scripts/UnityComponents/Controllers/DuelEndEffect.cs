@@ -28,6 +28,7 @@ namespace Game
             {
                 _volume.weight = Mathf.Lerp(startValue, _newWeight, t);
                 t += Time.deltaTime / time;
+                yield return null;
             }
 
             _volume.weight = _newWeight;
