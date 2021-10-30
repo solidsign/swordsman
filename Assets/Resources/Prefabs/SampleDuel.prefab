@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &265630617457830347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2777935047569710239}
+  - component: {fileID: 6484259193687509348}
+  - component: {fileID: 6964153978336979274}
+  m_Layer: 0
+  m_Name: Post-process Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2777935047569710239
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265630617457830347}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7106879705279125325}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6484259193687509348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265630617457830347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: a193ae1b215499f419313adaa70680d4, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 0
+  priority: 0
+--- !u!114 &6964153978336979274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265630617457830347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96adcaaf7eec4d4891a2fa6a656f8096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableTime: 0.05
+  disableTime: 0.05
 --- !u!1 &6897513853305711416
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6897513853042104796}
   ai: {fileID: 2171694328936760083}
-  duelEndEffect: {fileID: 0}
+  duelEndEffect: {fileID: 6964153978336979274}
 --- !u!1 &8896251341151087298
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,6 +139,7 @@ Transform:
   - {fileID: 6897513853042104795}
   - {fileID: 6897513853305711398}
   - {fileID: 2171694328936760084}
+  - {fileID: 2777935047569710239}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,6 +160,11 @@ PrefabInstance:
       propertyPath: DuelController
       value: 
       objectReference: {fileID: 6897513853305711417}
+    - target: {fileID: 4727526382021054715, guid: 3437ff4db31850b4da39ebef4f9c5d82,
+        type: 3}
+      propertyPath: attackPointOffsetX
+      value: -0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
         type: 3}
       propertyPath: m_RootOrder
@@ -151,7 +220,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4437745001702286087, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
 --- !u!4 &6897513853042104795 stripped
 Transform:
@@ -188,6 +258,11 @@ PrefabInstance:
       propertyPath: DuelController
       value: 
       objectReference: {fileID: 6897513853305711417}
+    - target: {fileID: 4727526382021054715, guid: 3437ff4db31850b4da39ebef4f9c5d82,
+        type: 3}
+      propertyPath: attackPointOffsetX
+      value: 0.63
+      objectReference: {fileID: 0}
     - target: {fileID: 4727526382021054719, guid: 3437ff4db31850b4da39ebef4f9c5d82,
         type: 3}
       propertyPath: m_RootOrder
@@ -243,7 +318,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5699031399019705405, guid: 3437ff4db31850b4da39ebef4f9c5d82,
+        type: 3}
+      propertyPath: offset.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4437745001702286087, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3437ff4db31850b4da39ebef4f9c5d82, type: 3}
 --- !u!4 &2171694328936760084 stripped
 Transform:

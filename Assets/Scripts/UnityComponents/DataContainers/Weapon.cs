@@ -14,7 +14,7 @@ namespace Game
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position + attackPointOffsetX * Vector3.right, transform.position + attackDistance * transform.right);
+            Gizmos.DrawLine(transform.position + attackPointOffsetX * Vector3.right, transform.position + attackPointOffsetX * Vector3.right + attackDistance * transform.right);
         }
     }
 }
