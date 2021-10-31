@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4727526382021054712}
   - component: {fileID: 4727526382021054715}
   - component: {fileID: 4727526382021054714}
-  - component: {fileID: 4727526382021054709}
   - component: {fileID: 5699031399019705405}
   m_Layer: 0
   m_Name: SampleSwordsman
@@ -224,19 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
---- !u!114 &4727526382021054709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4727526382021054708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce227bd324474c9baa4d587f3441989e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DuelController: {fileID: 0}
 --- !u!114 &5699031399019705405
 MonoBehaviour:
   m_ObjectHideFlags: 0
