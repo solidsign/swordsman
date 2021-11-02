@@ -29,8 +29,10 @@ namespace Game
             
             _player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             _ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
+            AIInput aiInput = new AIInput(this);
+            _ai.gameObject.AddComponent<AIInputInstance>().Init(aiInput); 
             _player.Init(PlayerInput.GetInstance());
-            _ai.Init(new AIInput(this));
+            _ai.Init(aiInput);
         }
 
         public void InstantiateNewAI(SwordsmanStateHandler ai)
