@@ -5,6 +5,6 @@ namespace Game
 {
     public abstract class AIStateHandler : StateHandler
     {
-        public abstract void Init(AIInput input, DuelLooker duelLooker);
+        public abstract void Init(AIInput input, AIDuelLooker aiDuelLooker);
     }
 }

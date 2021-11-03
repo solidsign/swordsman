@@ -15,7 +15,7 @@ namespace Game
         private SwordsmanStateHandler _ai;
         private SwordsmanStateHandler _defeated = null;
 
-        private DuelLooker _looker;
+        private AIDuelLooker _looker;
 
         public void Init(SwordsmanStateHandler player, SwordsmanStateHandler ai)
         {
@@ -28,12 +28,11 @@ namespace Game
             
             _ai = ai;
             AIInput aiInput = new AIInput(this);
-            _looker = new DuelLooker(this);
+            _looker = new AIDuelLooker(player, ai);
             
             Instantiate(_ai);
             _ai.transform.position = aiStartPosition;
             _ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            _ai.gameObject.AddComponent<AIInputInstance>().Init(aiInput); 
             _ai.Init(aiInput);
             _ai.GetComponent<AIStateHandler>().Init(aiInput, _looker);
         }
