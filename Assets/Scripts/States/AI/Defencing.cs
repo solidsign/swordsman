@@ -2,7 +2,6 @@
 using Game.Inputs;
 using Game.States.AI.Core;
 using Game.States.AI.Substates;
-using Game.States.AI.Substates.Core;
 
 namespace Game.States.AI
 {
