@@ -10,17 +10,17 @@ namespace Game
     public class SwordsmanStateHandler : StateHandler
     {
         private ISwordsmanInput _inputChecker;
-        private Weapon _weapon;
-        private BodyPosition _bodyPosition;
-        public Weapon Weapon => _weapon;
-        public BodyPosition BodyPosition => _bodyPosition;
+        public Weapon Weapon { get; private set; }
+        public BodyPosition BodyPosition { get; private set; }
+        public Speed Speed { get; private set; }
 
         private bool _isMoving;
 
         private void Awake()
         {
-            _weapon = GetComponent<Weapon>();
-            _bodyPosition = GetComponent<BodyPosition>();
+            Weapon = GetComponent<Weapon>();
+            BodyPosition = GetComponent<BodyPosition>();
+            Speed = GetComponent<Speed>();
         }
 
         public void Init(ISwordsmanInput input)
