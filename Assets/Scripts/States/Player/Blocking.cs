@@ -10,6 +10,8 @@ namespace Game.States.Player
      * but I didn't want this state and Attacking to have another SetState than other states have.
      * And I didn't want to allocate new class every time when SetState is called,
      * so it's was the best what I came up with.
+     * Actually I just forgot about existence of constructors, so it's really stupid
+     * Maybe I will refactor this later
      */
     public abstract class Blocking : BaseState
     {
