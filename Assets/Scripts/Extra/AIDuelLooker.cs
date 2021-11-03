@@ -28,6 +28,7 @@ namespace Game.Extra
 
         public bool PlayerIsAttacking() => _player.GetCurrentState().Contains(nameof(Game.States.Player.Attacking));
 
+        public bool AIIsAttacking() => _ai.GetCurrentState().Contains(nameof(Game.States.Player.Attacking));
         public Direction GetPlayersAttackDirection()
         {
             string state = _player.GetCurrentState();
