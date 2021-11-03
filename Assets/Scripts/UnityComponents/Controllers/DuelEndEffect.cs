@@ -6,6 +6,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace Game
 {
+    [RequireComponent(typeof(PostProcessVolume))]
     public class DuelEndEffect : MonoBehaviour
     {
         [Range(0f, PlayerAnimationConfiguration.AttackStateTime)] [SerializeField] private float enableTime;

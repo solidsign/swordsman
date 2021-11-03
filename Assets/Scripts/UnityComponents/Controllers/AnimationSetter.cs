@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Game.Extra;
 using Random = UnityEngine.Random;
 
 namespace Game
 {
+    [RequireComponent(typeof(Animator))]
     public class AnimationSetter : MonoBehaviour
     {
         private Animator _animator;

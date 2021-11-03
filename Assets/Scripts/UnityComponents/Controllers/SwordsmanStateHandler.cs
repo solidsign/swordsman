@@ -2,9 +2,11 @@
 using Game.Inputs;
 using Game.States;
 using Game.States.Player;
+using UnityEngine;
 
 namespace Game
 {
+    [RequireComponent(typeof(Weapon), typeof(BodyPosition), typeof(Speed))]
     public class SwordsmanStateHandler : StateHandler
     {
         private ISwordsmanInput _inputChecker;
