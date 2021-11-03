@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Game.States.AI.Substates.Core;
 
-namespace Game.States.AI.Substates.Core
+namespace Game.States.AI.Core
 {
     public class SubstatesChain
     {
