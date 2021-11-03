@@ -9,30 +9,33 @@ namespace Game
     {
         [SerializeField] private Vector2 playerStartPosition;
         [SerializeField] private Vector2 aiStartPosition;
-        
-        private SwordsmanStateHandler _player;
-        private SwordsmanStateHandler _ai;
-
         [SerializeField] private DuelEndEffect duelEndEffect;
 
+        private SwordsmanStateHandler _player;
+        private SwordsmanStateHandler _ai;
         private SwordsmanStateHandler _defeated = null;
+
+        private DuelLooker _looker;
 
         public void Init(SwordsmanStateHandler player, SwordsmanStateHandler ai)
         {
             _player = player;
-            _ai = ai;
 
             Instantiate(_player);
             _player.transform.position = playerStartPosition;
+            _player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
+            _player.Init(PlayerInput.GetInstance());
+            
+            _ai = ai;
+            AIInput aiInput = new AIInput(this);
+            _looker = new DuelLooker(this);
+            
             Instantiate(_ai);
             _ai.transform.position = aiStartPosition;
-            
-            _player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
             _ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            AIInput aiInput = new AIInput(this);
             _ai.gameObject.AddComponent<AIInputInstance>().Init(aiInput); 
-            _player.Init(PlayerInput.GetInstance());
             _ai.Init(aiInput);
+            _ai.GetComponent<AIStateHandler>().Init(aiInput, _looker);
         }
 
         public void InstantiateNewAI(SwordsmanStateHandler ai)
