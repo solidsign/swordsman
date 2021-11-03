@@ -11,6 +11,7 @@ namespace Game.States.Player
      * And I didn't want to allocate new class every time when SetState is called,
      * so it's was the best what I came up with.
      * Actually I just forgot about existence of constructors, so it's really stupid
+     * I just tunnel visioned on Init method
      * Maybe I will refactor this later
      */
     public abstract class Blocking : BaseState
