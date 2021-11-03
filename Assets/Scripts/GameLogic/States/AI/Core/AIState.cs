@@ -1,6 +1,5 @@
 ﻿using Game.Extra;
 using Game.Inputs;
-using Game.States.AI.Substates.Core;
 
 namespace Game.States.AI.Core
 {
@@ -22,6 +21,7 @@ namespace Game.States.AI.Core
         public virtual void Enter()
         {
             _substates.Reset();
+            _substates.Start();
         }
     }
 }

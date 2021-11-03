@@ -30,6 +30,12 @@ namespace Game.States.AI.Core
                 _substates[_current].Enter();
             }
         }
+
+        public void Start()
+        {
+            _substates[_current].Enter();
+        }
+        
         public void ExecuteCurrent()
         {
             UpdateCurrentCounter();
@@ -48,13 +54,6 @@ namespace Game.States.AI.Core
             if(!IsFinished) _substates[_current].Exit();
             else IsFinished = false;
             _current = 0;
-        }
-
-        public void EnterState(int i)
-        {
-            if(!IsFinished) _substates[_current].Exit();
-            else IsFinished = false;
-            _current = i;
         }
     }
 }
