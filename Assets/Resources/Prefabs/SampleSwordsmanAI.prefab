@@ -17,10 +17,11 @@ GameObject:
   - component: {fileID: 4727526382021054715}
   - component: {fileID: 4727526382021054714}
   - component: {fileID: 5699031399019705405}
-  - component: {fileID: -7991577310728132661}
-  - component: {fileID: 2604873181143326924}
+  - component: {fileID: 7073364505243426220}
+  - component: {fileID: -4643244159602618436}
+  - component: {fileID: 929983467371194235}
   m_Layer: 0
-  m_Name: SampleSwordsman
+  m_Name: SampleSwordsmanAI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,8 +34,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4727526382021054708}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,7 +239,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -1.29, y: 0}
---- !u!114 &-7991577310728132661
+--- !u!114 &7073364505243426220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727526382021054708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a3f30bf014e4809a028186f25635f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourSwitchTime: 10
+  relativeTimeDispersion: 23
+--- !u!114 &-4643244159602618436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,7 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DuelController: {fileID: 0}
---- !u!114 &2604873181143326924
+--- !u!114 &929983467371194235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

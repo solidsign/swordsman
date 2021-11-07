@@ -9,7 +9,7 @@ namespace Game
         protected Dictionary<string, BaseState> States;
         protected BaseState CurrentState;
 
-        private void Start()
+        protected virtual void Start()
         {
             InitializeDictionary();
             SetStartState();
