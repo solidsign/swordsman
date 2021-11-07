@@ -12,10 +12,6 @@ namespace Game
         private void Start()
         {
             InitializeDictionary();
-            foreach (var state in States.Values)
-            {
-                state.Init(this);
-            }
             SetStartState();
         }
 

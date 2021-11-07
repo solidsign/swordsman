@@ -14,11 +14,11 @@ namespace Game.States.Player
         protected abstract Direction _direction { get; }
         protected abstract PlayerAnimation _attackAnimation { get; }
         protected abstract PlayerAnimation _prepareAnimation { get; }
-        public override void Init(StateHandler stateHandler)
+        protected Attacking(SwordsmanStateHandler stateHandler)
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _weapon = stateHandler.GetComponent<Weapon>();
-            _stateHandler = stateHandler as SwordsmanStateHandler;
+            _stateHandler = stateHandler;
             _duelController = stateHandler.GetComponent<DuelControllerInstance>().DuelController;
         }
 

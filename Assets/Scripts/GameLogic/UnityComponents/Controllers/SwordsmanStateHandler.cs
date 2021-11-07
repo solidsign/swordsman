@@ -32,18 +32,18 @@ namespace Game
         {
             States = new Dictionary<string, BaseState>()
             {
-                {nameof(Idle), new Idle()},
-                {nameof(MovingLeft), new MovingLeft()},
-                {nameof(MovingRight), new MovingRight()},
-                {nameof(AttackedUp), new AttackedUp()},
-                {nameof(AttackedMiddle), new AttackedMiddle()},
-                {nameof(AttackedBottom), new AttackedBottom()},
-                {nameof(AttackingUp), new AttackingUp()},
-                {nameof(AttackingMiddle), new AttackingMiddle()},
-                {nameof(AttackingBottom), new AttackingBottom()},
-                {nameof(BlockingUp), new BlockingUp()},
-                {nameof(BlockingMiddle), new BlockingMiddle()},
-                {nameof(BlockingBottom), new BlockingBottom()},
+                {nameof(Idle), new Idle(this)},
+                {nameof(MovingLeft), new MovingLeft(this)},
+                {nameof(MovingRight), new MovingRight(this)},
+                {nameof(AttackedUp), new AttackedUp(this)},
+                {nameof(AttackedMiddle), new AttackedMiddle(this)},
+                {nameof(AttackedBottom), new AttackedBottom(this)},
+                {nameof(AttackingUp), new AttackingUp(this)},
+                {nameof(AttackingMiddle), new AttackingMiddle(this)},
+                {nameof(AttackingBottom), new AttackingBottom(this)},
+                {nameof(BlockingUp), new BlockingUp(this)},
+                {nameof(BlockingMiddle), new BlockingMiddle(this)},
+                {nameof(BlockingBottom), new BlockingBottom(this)},
             };
         }
 

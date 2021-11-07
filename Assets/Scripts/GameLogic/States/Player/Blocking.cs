@@ -20,7 +20,7 @@ namespace Game.States.Player
         private AnimationSetter _animator;
         private StateHandler _stateHandler;
         protected abstract PlayerAnimation _animation { get; }
-        public override void Init(StateHandler stateHandler)
+        protected Blocking(StateHandler stateHandler)
         {
             _blockedAttack = nameof(Attacked) + this.ToString().Remove(0, nameof(Blocking).Length);
             _animator = stateHandler.GetComponent<AnimationSetter>();

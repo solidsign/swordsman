@@ -7,7 +7,7 @@ namespace Game.States.Player
     {
         private AnimationSetter _animator;
         protected abstract PlayerAnimation _animation { get; }
-        public override void Init(StateHandler stateHandler)
+        protected Attacked(StateHandler stateHandler)
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
         }

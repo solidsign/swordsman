@@ -7,7 +7,7 @@ namespace Game.States.Player
     {
         private AnimationSetter _animator;
 
-        public override void Init(StateHandler stateHandler)
+        public Idle(StateHandler stateHandler)
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
         }

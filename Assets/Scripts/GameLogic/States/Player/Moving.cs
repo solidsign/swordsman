@@ -9,7 +9,7 @@ namespace Game.States.Player
         protected Rigidbody2D _rigidbody;
         protected float _speed;
 
-        public override void Init(StateHandler stateHandler)
+        protected Moving(StateHandler stateHandler)
         {
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _rigidbody = stateHandler.GetComponent<Rigidbody2D>();

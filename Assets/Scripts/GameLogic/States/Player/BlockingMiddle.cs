@@ -4,6 +4,10 @@ namespace Game.States.Player
 {
     public class BlockingMiddle : Blocking
     {
+        public BlockingMiddle(StateHandler stateHandler) : base(stateHandler)
+        {
+        }
+
         public override string ToString()
         {
             return nameof(BlockingMiddle);
