@@ -3,22 +3,21 @@ using Game.Inputs;
 
 namespace Game.States.AI.Core
 {
-    public abstract class AIState
+    public abstract class AIState : BaseState
     {
         protected SubstatesChain _substates;
-        public abstract void Init(AIInput input, AIDuelLooker looker);
-        public virtual void Execute()
+        public override void Execute()
         {
             if (_substates.IsFinished) _substates.Reset();
             _substates.ExecuteCurrent();
         }
 
-        public virtual void Exit()
+        public override void Exit()
         {
             _substates.Reset();
         }
 
-        public virtual void Enter()
+        public override void Enter()
         {
             _substates.Reset();
             _substates.Start();

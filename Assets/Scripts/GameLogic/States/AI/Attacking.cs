@@ -7,7 +7,7 @@ namespace Game.States.AI
 {
     public class Attacking : AIState
     {
-        public override void Init(AIInput aiInput, AIDuelLooker looker)
+        public Attacking(AIInput aiInput, AIDuelLooker looker)
         {
             _substates = new SubstatesChain()
                 .Add(new MoveToPlayerForAttack(aiInput, looker))

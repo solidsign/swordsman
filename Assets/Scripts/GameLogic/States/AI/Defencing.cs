@@ -7,7 +7,7 @@ namespace Game.States.AI
 {
     public class Defencing : AIState
     {
-        public override void Init(AIInput input, AIDuelLooker looker)
+        public Defencing(AIInput input, AIDuelLooker looker)
         {
             _substates = new SubstatesChain()
                 .Add(new MoveFromPlayerDefencing(input, looker))
