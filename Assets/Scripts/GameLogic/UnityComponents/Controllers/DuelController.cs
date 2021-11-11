@@ -8,10 +8,10 @@ namespace Game
     {
         [Header("Duelists")]
         [Header("Player")]
-        [SerializeField] private SwordsmanStateHandler player;
+        [SerializeField] private SwordsmanStateHandler playerPrefab;
         [SerializeField] private float playerStartPositionX;
         [Header("AI")]
-        [SerializeField] private SwordsmanStateHandler ai;
+        [SerializeField] private SwordsmanStateHandler aiPrefab;
         [SerializeField] private float aiStartPositionX;
         [Header("Post-Effects")]
         [SerializeField] private DuelEndEffect deathEffect;
@@ -19,47 +19,55 @@ namespace Game
         [SerializeField] private UI retryUI;
         [SerializeField] private UI winUI;
 
+        private SwordsmanStateHandler _player;
+        private SwordsmanStateHandler _ai;
+        
         private void Awake()
         {
-            AttackHandler attackHandler = new AttackHandler(player, ai, HandleDuelEnd);
-            InstantiatePlayer(attackHandler);
-            InstantiateAI(attackHandler);
+            _player = Instantiate(playerPrefab);
+            _ai = Instantiate(aiPrefab);
+            
+            AttackHandler attackHandler = new AttackHandler(_player, _ai, HandleDuelEnd);
+
+            InjectionsForPlayer(attackHandler);
+            InjectionsForAI(attackHandler);
+            
             PlaceDuelists();
         }
 
-        private void InstantiatePlayer(AttackHandler attackHandler)
+        private void InjectionsForPlayer(AttackHandler attackHandler)
         {
-            Instantiate(player);
-            player.gameObject.AddComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
-            player.Init(PlayerInput.GetInstance());
+            _player.GetComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
+            _player.Init(PlayerInput.GetInstance());
         }
 
-        private void InstantiateAI(AttackHandler attackHandler)
+        private void InjectionsForAI(AttackHandler attackHandler)
         {
             AIInput aiInput = new AIInput();
-            ai.gameObject.AddComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
-            ai.Init(aiInput);
-            ai.GetComponent<AIStateHandler>().Init(aiInput, new AIDuelLooker(player, ai));
+            
+            _ai.GetComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
+            _ai.Init(aiInput);
+            _ai.GetComponent<AIStateHandler>().Init(aiInput, new AIDuelLooker(_player, _ai));
         }
 
         private void PlaceDuelists()
         {
             if (playerStartPositionX < aiStartPositionX)
-                ai.transform.eulerAngles = new Vector3(0, 180f, 0);
+                aiPrefab.transform.eulerAngles = new Vector3(0, 180f, 0);
             else
-                player.transform.eulerAngles = new Vector3(0, 180f, 0);
-            player.transform.position = new Vector3(playerStartPositionX, 0, 0);
-            ai.transform.position = new Vector3(aiStartPositionX,0,0);
+                playerPrefab.transform.eulerAngles = new Vector3(0, 180f, 0);
+            playerPrefab.transform.position = new Vector3(playerStartPositionX, 0, 0);
+            aiPrefab.transform.position = new Vector3(aiStartPositionX,0,0);
         }
         
         private void HandleDuelEnd(SwordsmanStateHandler defeated)
         {
-            player.enabled = false;
-            ai.enabled = false;
+            playerPrefab.enabled = false;
+            aiPrefab.enabled = false;
             deathEffect.EnableEffect(() =>
             {
-                if (defeated == player) retryUI.Enable();
-                else if (defeated == ai) winUI.Enable();
+                //if (defeated == player) retryUI.Enable();  TODO: turn on when UI will be done
+                //else if (defeated == ai) winUI.Enable();
                 Destroy(defeated);
             });
         }

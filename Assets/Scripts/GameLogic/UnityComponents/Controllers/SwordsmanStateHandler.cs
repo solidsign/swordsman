@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Game
 {
     [RequireComponent(typeof(Weapon), typeof(BodyPosition), typeof(Speed))]
+    [RequireComponent(typeof(AttackHandlerInstance))]
     public class SwordsmanStateHandler : StateHandler
     {
         private ISwordsmanInput _inputChecker;
