@@ -21,7 +21,7 @@ namespace Game.States.Player
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _weapon = stateHandler.GetComponent<Weapon>();
             _stateHandler = stateHandler;
-            _attackHandler = stateHandler.GetComponent<AttackHandlerInstance>().attackHandler;
+            _attackHandler = stateHandler.GetComponent<AttackHandlerInstance>().AttackHandler;
         }
 
         public override void Enter()

@@ -22,7 +22,7 @@ namespace Game
 
         private void Awake()
         {
-            AttackHandler attackHandler = new AttackHandler(player, ai, this);
+            AttackHandler attackHandler = new AttackHandler(player, ai, HandleDuelEnd);
             InstantiatePlayer(attackHandler);
             InstantiateAI(attackHandler);
             PlaceDuelists();
@@ -31,14 +31,14 @@ namespace Game
         private void InstantiatePlayer(AttackHandler attackHandler)
         {
             Instantiate(player);
-            player.gameObject.AddComponent<AttackHandlerInstance>().attackHandler = attackHandler;
+            player.gameObject.AddComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
             player.Init(PlayerInput.GetInstance());
         }
 
         private void InstantiateAI(AttackHandler attackHandler)
         {
             AIInput aiInput = new AIInput();
-            ai.gameObject.AddComponent<AttackHandlerInstance>().attackHandler = attackHandler;
+            ai.gameObject.AddComponent<AttackHandlerInstance>().AttackHandler = attackHandler;
             ai.Init(aiInput);
             ai.GetComponent<AIStateHandler>().Init(aiInput, new AIDuelLooker(player, ai));
         }
@@ -53,7 +53,7 @@ namespace Game
             ai.transform.position = aiStartPosition;
         }
         
-        public void HandleDuelEnd(SwordsmanStateHandler defeated)
+        private void HandleDuelEnd(SwordsmanStateHandler defeated)
         {
             player.enabled = false;
             ai.enabled = false;

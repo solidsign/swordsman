@@ -1,4 +1,5 @@
-﻿using Game.Extra;
+﻿using System;
+using Game.Extra;
 using Game.Inputs;
 using Game.States.Player;
 using UnityEngine;
@@ -9,15 +10,13 @@ namespace Game
     {
         private readonly SwordsmanStateHandler _player;
         private readonly SwordsmanStateHandler _ai;
-        private readonly DuelController _duel;
-        
-        private AIDuelLooker _looker;
+        private readonly Action<SwordsmanStateHandler> _handleDuelEnd;
 
-        public AttackHandler(SwordsmanStateHandler player, SwordsmanStateHandler ai, DuelController duel)
+        public AttackHandler(SwordsmanStateHandler player, SwordsmanStateHandler ai, Action<SwordsmanStateHandler> handleDuelEnd)
         {
             _player = player;
             _ai = ai;
-            _duel = duel;
+            _handleDuelEnd = handleDuelEnd;
         }
 
         public void Attack(SwordsmanStateHandler attacker, Direction direction, float attackDistance)
@@ -39,7 +38,7 @@ namespace Game
             attacked.SetState(nameof(Attacked) + direction.ToString());
             
             if (!attacked.GetCurrentState().Contains(nameof(Attacked))) return;
-            _duel.HandleDuelEnd(attacked);
+            _handleDuelEnd(attacked);
         }
     }
 }

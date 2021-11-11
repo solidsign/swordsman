@@ -4,6 +4,6 @@ namespace Game
 {
     public class AttackHandlerInstance : MonoBehaviour
     {
-        public AttackHandler attackHandler;
+        public AttackHandler AttackHandler;
     }
 }
