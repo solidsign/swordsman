@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Game.Extra;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -35,16 +36,19 @@ namespace Game
             _volume.weight = _newWeight;
         }
 
-        public void EnableEffect()
+        public async void EnableEffect(Action onDisable)
         {
             StopAllCoroutines();
             _newWeight = 1f;
             StartCoroutine(UpdateWeight(enableTime));
+            await Task.Delay((int) (PlayerAnimationConfiguration.AttackStateTime * 1000));
+            DisableEffect();
+            await Task.Delay((int) (disableTime * 1000));
+            onDisable();
         }
 
-        public void DisableEffect()
+        private void DisableEffect()
         {
-            StopAllCoroutines();
             _newWeight = 0f;
             StartCoroutine(UpdateWeight(disableTime));
         }

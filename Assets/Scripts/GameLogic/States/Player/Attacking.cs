@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using Game.Extra;
 using UnityEngine;
 
@@ -8,9 +9,10 @@ namespace Game.States.Player
     {
         private AnimationSetter _animator;
         private Weapon _weapon;
-        private DuelController _duelController;
+        private AttackHandler _attackHandler;
         private SwordsmanStateHandler _stateHandler;
         private bool _preparing;
+        private Task _waitingForNextState = null;
         protected abstract Direction _direction { get; }
         protected abstract PlayerAnimation _attackAnimation { get; }
         protected abstract PlayerAnimation _prepareAnimation { get; }
@@ -19,18 +21,20 @@ namespace Game.States.Player
             _animator = stateHandler.GetComponent<AnimationSetter>();
             _weapon = stateHandler.GetComponent<Weapon>();
             _stateHandler = stateHandler;
-            _duelController = stateHandler.GetComponent<DuelControllerInstance>().DuelController;
+            _attackHandler = stateHandler.GetComponent<AttackHandlerInstance>().attackHandler;
         }
 
         public override void Enter()
         {
             _stateHandler.StopAllCoroutines();
             _stateHandler.StartCoroutine(PrepareForAttack());
+            _waitingForNextState = null;
         }
 
         public override void Exit()
         {
             _stateHandler.StopAllCoroutines();
+            _waitingForNextState?.Dispose();
         }
 
         private IEnumerator PrepareForAttack()
@@ -46,13 +50,13 @@ namespace Game.States.Player
         private void Attack()
         {
             _animator.SetAnimation(_attackAnimation);
-            _duelController.Attack(_stateHandler, _direction, _weapon.AttackDistance);
-            _stateHandler.StartCoroutine(WaitForNextState());
+            _attackHandler.Attack(_stateHandler, _direction, _weapon.AttackDistance);
+            _waitingForNextState = WaitForNextState();
         }
 
-        private IEnumerator WaitForNextState()
+        private async Task WaitForNextState()
         {
-            yield return new WaitForSeconds(PlayerAnimationConfiguration.AttackStateTime);
+            await Task.Delay((int) (PlayerAnimationConfiguration.AttackStateTime * 1000));
             _stateHandler.SetState(nameof(Idle));
         }
 
@@ -62,10 +66,7 @@ namespace Game.States.Player
             {
                 return state.Contains(nameof(Blocking)) || state.Contains(nameof(Attacked)) || state.Contains(nameof(Attacking));
             }
-            else
-            {
-                return true;
-            }
+            return true;
         }
     }
 }

@@ -1,74 +1,68 @@
 ﻿using Game.Extra;
 using Game.Inputs;
-using Game.States.Player;
+using UnityEditor;
 using UnityEngine;
 
 namespace Game
 {
     public class DuelController : MonoBehaviour
     {
+        [Header("Duelists")]
+        [Header("Player")]
+        [SerializeField] private SwordsmanStateHandler player;
         [SerializeField] private Vector2 playerStartPosition;
+        [Header("AI")]
+        [SerializeField] private SwordsmanStateHandler ai;
         [SerializeField] private Vector2 aiStartPosition;
-        [SerializeField] private DuelEndEffect duelEndEffect;
+        [Header("Post-Effects")]
+        [SerializeField] private DuelEndEffect deathEffect;
+        [Header("UI")]
+        [SerializeField] private UI retryUI;
+        [SerializeField] private UI winUI;
 
-        private SwordsmanStateHandler _player;
-        private SwordsmanStateHandler _ai;
-        private SwordsmanStateHandler _defeated = null;
-
-        private AIDuelLooker _looker;
-
-        public void Init(SwordsmanStateHandler player, SwordsmanStateHandler ai)
+        private void Awake()
         {
-            _player = player;
-
-            Instantiate(_player);
-            _player.transform.position = playerStartPosition;
-            _player.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            _player.Init(PlayerInput.GetInstance());
-            
-            _ai = ai;
-            AIInput aiInput = new AIInput(this);
-            _looker = new AIDuelLooker(player, ai);
-            
-            Instantiate(_ai);
-            _ai.transform.position = aiStartPosition;
-            _ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            _ai.Init(aiInput);
-            _ai.GetComponent<AIStateHandler>().Init(aiInput, _looker);
+            AttackHandler attackHandler = new AttackHandler(player, ai, this);
+            InstantiatePlayer(attackHandler);
+            InstantiateAI(attackHandler);
+            PlaceDuelists();
         }
 
-        public void InstantiateNewAI(SwordsmanStateHandler ai)
+        private void InstantiatePlayer(AttackHandler attackHandler)
         {
-            _player.transform.position = playerStartPosition;
-            Instantiate(_ai);
-            _ai.transform.position = aiStartPosition;
-            _ai.gameObject.AddComponent<DuelControllerInstance>().DuelController = this;
-            _ai.Init(new AIInput(this));
-        }
-        public string GetPlayerState() => _player.GetCurrentState();
-
-        public void Attack(SwordsmanStateHandler attacker, Direction direction, float attackDistance)
-        {
-            SwordsmanStateHandler attacked;
-            if (attacker == _player) attacked = _ai;
-            else if (attacker == _ai) attacked = _player;
-            else return;
-
-            var distance = Vector2.Distance(attacker.Weapon.AttackPointPosition, attacked.BodyPosition.Value);
-            if (distance > attacker.Weapon.AttackDistance) return;
-            
-            attacked.SetState(nameof(Attacked) + direction.ToString());
-            
-            if (!attacked.GetCurrentState().Contains(nameof(Attacked))) return;
-            duelEndEffect.EnableEffect();
-            _defeated = attacked;
-            Invoke(nameof(DisableEffect), PlayerAnimationConfiguration.DeathTime);
+            Instantiate(player);
+            player.gameObject.AddComponent<AttackHandlerInstance>().attackHandler = attackHandler;
+            player.Init(PlayerInput.GetInstance());
         }
 
-        private void DisableEffect()
+        private void InstantiateAI(AttackHandler attackHandler)
         {
-            duelEndEffect.DisableEffect();
-            Destroy(_defeated.gameObject);
+            AIInput aiInput = new AIInput();
+            ai.gameObject.AddComponent<AttackHandlerInstance>().attackHandler = attackHandler;
+            ai.Init(aiInput);
+            ai.GetComponent<AIStateHandler>().Init(aiInput, new AIDuelLooker(player, ai));
+        }
+
+        private void PlaceDuelists()
+        {
+            if (playerStartPosition.x < aiStartPosition.x)
+                ai.transform.eulerAngles = new Vector3(0, 180f, 0);
+            else
+                player.transform.eulerAngles = new Vector3(0, 180f, 0);
+            player.transform.position = playerStartPosition;
+            ai.transform.position = aiStartPosition;
+        }
+        
+        public void HandleDuelEnd(SwordsmanStateHandler defeated)
+        {
+            player.enabled = false;
+            ai.enabled = false;
+            deathEffect.EnableEffect(() =>
+            {
+                if (defeated == player) retryUI.Enable();
+                else if (defeated == ai) winUI.Enable();
+                Destroy(defeated);
+            });
         }
     }
 }

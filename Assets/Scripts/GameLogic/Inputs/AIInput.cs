@@ -2,8 +2,6 @@
 {
     public class AIInput : ISwordsmanInput // TODO: don't forget to implement AI
     {
-        private DuelController _duel;
-        
         private bool _startMoveRight = false;
         private bool _startMoveLeft = false;
         private bool _stopMove = false;
@@ -13,12 +11,6 @@
         private bool _attackUp = false;
         private bool _attackMiddle = false;
         private bool _attackBottom = false;
-        
-        
-        public AIInput(DuelController duelController)
-        {
-            _duel = duelController;
-        }
 
         #region Triggers
 
